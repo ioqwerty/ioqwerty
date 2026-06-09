@@ -1,0 +1,12 @@
+{
+  "name": "ioqwerty/ioqwerty",
+  "description": "Name reservation for ioqwerty.",
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://github.com/ioqwerty/ioqwerty",
+  "authors": [
+    {
+      "name": "ioqwerty"
+    }
+  ]
+}
