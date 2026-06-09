@@ -1,0 +1,26 @@
+name: Publish GHCR placeholder
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Build image
+        run: docker build -t ghcr.io/ioqwerty/ioqwerty:0.0.1 -t ghcr.io/ioqwerty/ioqwerty:latest .
+
+      - name: Push image
+        run: |
+          docker push ghcr.io/ioqwerty/ioqwerty:0.0.1
+          docker push ghcr.io/ioqwerty/ioqwerty:latest
